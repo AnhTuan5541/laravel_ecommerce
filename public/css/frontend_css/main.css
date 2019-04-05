@@ -293,7 +293,7 @@ ul.sub-menu {
 	position: absolute;
 	top: 30px;
 	left: 0;
-	background: rgba(0, 0, 0, 0.6);
+	background: #ffffff;
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -301,7 +301,8 @@ ul.sub-menu {
 	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
 	display: none;
-	z-index: 999;
+  z-index: 999;
+  
 }
 
 .dropdown ul.sub-menu li .active{
@@ -319,7 +320,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a{
-  color: #fff;
+  color: #696763;
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
@@ -1433,7 +1434,7 @@ h2.title {
 #form {
   display: block;
   margin-bottom: 185px;
-  margin-top: 185px;
+  /* margin-top: 185px; */
   overflow: hidden;
 }
 

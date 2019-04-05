@@ -62,17 +62,8 @@ class FrontendController extends Controller
         $product = Product::find($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        
         $cart->add($product, $id);
-        // echo $cart->qty;
-        // $quantity = $_GET['quantity'];        
-        // echo $quantity;
-        // die;
         $req->session()->put('cart', $cart);
-        // if($cart->qty == $product->quantity) {
-        //     // return redirect()->back()->with('error_messenger','123');
-        //     echo '123';
-        // }
         return redirect()->back();
     }
 
@@ -122,10 +113,13 @@ class FrontendController extends Controller
     public function login(Request $req){
         if($req->isMethod('post')){
             if(Auth::attempt(['email'=>$req->email, 'password'=>$req->password ])){
+                if(Session::has('cart')) {
+                    return redirect('check-out');
+                }
                 return redirect('home');
             }
             else{
-                return redirect('user/login')->with('error_messenger', 'Email or Password is not correct');
+                return redirect('login')->with('error_messenger', 'Email or Password is not correct');
             }
         }
         return view('login');

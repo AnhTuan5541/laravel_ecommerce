@@ -12,6 +12,7 @@
         @if(session('success_messenger'))
             <div class="alert alert-success" >{{session('error_messenger')}}</div>
         @endif
+        @if(Session::has('cart'))
         <div class="review-payment">
             <h2>Review & Payment</h2>
         </div>
@@ -68,10 +69,23 @@
                 <form class="form-horizontal" method="post" action="{{url('check-out')}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="card-body ">
-                        <div class="form-group row text-right ">
-                            <input type="text" class="form-control" name="customer_name" placeholder="Name*" required value= "{{Auth::guard('web')->user()->name}}"><br>
-                            <input type="text" class="form-control" name="address" placeholder="Address*" required value= "{{Auth::guard('web')->user()->address}}"><br>
-                            <input type="text" class="form-control" name="phone" placeholder="Phone*" required value= "{{Auth::guard('web')->user()->phone}}"><br>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="customer_name" placeholder="Name*" required value= "{{Auth::guard('web')->user()->name}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="address" placeholder="Address*" required value= "{{Auth::guard('web')->user()->address}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="phone" placeholder="Phone*" required value= "{{Auth::guard('web')->user()->phone}}">
+                            </div>
                         </div>
                     </div>
                     <div class="border-top">
@@ -83,6 +97,8 @@
                 </form>
             </div>
         </div>
+        @endif
+        @else <div class="row text-center" style="font-size: 40px; color: #FE980F;">No product in cart </br></div> 
         @endif
     </div>
     </div>

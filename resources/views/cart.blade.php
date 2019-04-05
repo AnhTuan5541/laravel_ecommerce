@@ -58,7 +58,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="text-right" style="font-size: 20px; color: #FE980F;"> <strong>Total Price: {{number_format($totalPrice, 0, ',',
+            <div class="text-right" style="font-size: 20px; color: #FE980F;"> 
+                <strong>Total Price: {{number_format($totalPrice, 0, ',',
                     '.')}}đ</strong></div>
         </div>
         <div class="text-right"><a class="btn btn-success btn-md " href="{{url('check-out')}}">Check Out</a></div><br>
@@ -84,20 +85,12 @@
     $('.cart_quantity_up').click(function (e) {
         e.preventDefault();
         var idItem = $(this).attr('idItem');
-        var quantity = $('.cart_quantity_input').val();
-        
         $.ajax({
-            type: 'POST'
-            
             url: 'add-to-cart/' + idItem ,
-            
-            data: { quantity: 'quantity' }
             success: function(){
                 window.location.reload();
             }
         });
-        alert(123);
-        
     });
 
     $('.cart_quantity_delete').click(function (e) {

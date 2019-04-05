@@ -25,27 +25,21 @@
                                     <span class="badge">{{Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span>
                                 </a>
                             </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/admin_assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
-                                <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                @if(Auth::guard('web')->user())
-                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> {{Auth::guard('web')->user()->name}}</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{url('/setting')}}"><i class="ti-settings m-r-5 m-l-5"></i> Change password</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{url('/logout')}}"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
-                                    <div class="dropdown-divider"></div>
-                                    <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
-                                @endif
-                                </div>
-                            </li> -->
-                            <li><a href="{{url('user/login')}}"><i class="fa fa-user"></i>                             
-                            @if(Auth::user()) {{Auth::user()->name}}                            
-                            @else 
-                            Login
-                            @endif 
+                            @if(Auth::check())
+                            <li class="dropdown" ><a href="" onclick="return false"><i class="fa fa-user"></i> {{Auth::guard('web')->user()->name}}</a>
+                                <ul role="menu" class="sub-menu">
+                                    <li ><a href="{{url('user/change-password')}}">Change Password</a></li>
+                                    <li ><a href="{{url('user/logout')}}">Logout</a></li>
+                                </ul>
+                            </li>
+                            @else <li><a href="{{url('user/login')}}"><i class="fa fa-user"></i>Login</li>
+                            @endif
+                            <!-- <li><a href="{{url('user/login')}}"><i class="fa fa-user"></i>                             
+                            @if(Auth::user()) {{Auth::user()->name}}                                                        
+                            @else Login
+                            @endif
                             </a></li>
-                            <li><a href="{{url('user/logout')}}"><i class="fas fa-registered"></i> Logout</a></li>
+                            <li><a href="{{url('user/logout')}}"><i class="fas fa-registered"></i> Logout</a></li> -->
                             <li><a href="{{url('user/register')}}"><i class="fas fa-registered"></i> Register</a></li>
                         </ul>
                     </div>

@@ -12,7 +12,7 @@ use App\Order;
 class UserController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth:web');
     }
 
     public function checkOut(Request $req){
@@ -22,7 +22,6 @@ class UserController extends Controller
             return view('checkOut',['items' => $cart->items, 'totalPrice' => $cart->totalPrice, 'totalQty' => $cart->totalQty]);
         }
         $order = new Order();
-        $order->cart = serialize($cart);
         $order->customer_name = $req->customer_name;
         $order->address = $req->address;
         $order->phone = $req->phone;

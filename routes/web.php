@@ -74,7 +74,7 @@ Route::get('remove-items/{id}', 'FrontendController@removeItems');
 
 Route::get('/cart', 'FrontendController@getCart');
 
-Route::match(['get', 'post'], 'user/login', 'FrontendController@login');
+Route::match(['get', 'post'], 'user/login', 'FrontendController@login')->name('user.login');
 
 Route::match(['get', 'post'], 'user/register', 'FrontendController@register');
 
